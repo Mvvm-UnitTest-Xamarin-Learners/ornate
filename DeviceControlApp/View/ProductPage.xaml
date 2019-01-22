@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="DeviceControlApp.View.ProductPage"
+    Title="Product Page"
+    x:Name="product">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+            <Button Text="Back"  Command="{Binding GoBackCommand}"/>
+            <Button Text="GetLocation" Command="{Binding DisplayLocationCommand}"/>
+            
+            <Label x:Name="Latitude" Text="{Binding Latitude}" IsVisible="{Binding flag}" />
+            <Label x:Name="Longitude" Text="{Binding Longitude}" IsVisible="{Binding flag}"/>
+            <Button Text="Clear" Command="{Binding ClearLocationCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
