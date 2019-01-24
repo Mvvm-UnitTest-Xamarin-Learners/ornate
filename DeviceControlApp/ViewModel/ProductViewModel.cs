@@ -13,9 +13,9 @@ namespace DeviceControlApp.ViewModel
     {
        
        
-        public RelayCommand GoBackCommand { get; private set; }
-        public RelayCommand DisplayLocationCommand { get; private set; }
-        public RelayCommand ClearLocationCommand { get; private set; }
+        public ICommand GoBackCommand { get; private set; }
+        public ICommand DisplayLocationCommand { get; private set; }
+        public ICommand ClearLocationCommand { get; private set; }
         public IPageService _pageService;
         public ILocationService _locationService;
 
@@ -64,14 +64,14 @@ namespace DeviceControlApp.ViewModel
 
         }
 
-        private void ClearLocation(object obj)
+        private void ClearLocation()
         {
             Latitude = "";
             Longitude = "";
             Flag = false;
         }
 
-        private void GoToHomePage(object obj)
+        private void GoToHomePage()
         {
             var viewModel = new HomePageViewModel(_pageService, _locationService);
             _pageService.GoNext(viewModel);
@@ -79,7 +79,7 @@ namespace DeviceControlApp.ViewModel
 
       
 
-        private async void DisplayLocation(Object obj) 
+        private async void DisplayLocation() 
         {
             var myLocation = await _locationService.GetLocation();
             Latitude = myLocation.Latitude;

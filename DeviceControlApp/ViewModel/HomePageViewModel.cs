@@ -9,7 +9,7 @@ namespace DeviceControlApp.ViewModel
     public class HomePageViewModel
     {
       
-        public RelayCommand GoToNextCommand { get; private set; }
+        public ICommand GoToNextCommand { get; private set; }
 
         private IPageService _pageService;
 
@@ -22,7 +22,7 @@ namespace DeviceControlApp.ViewModel
             GoToNextCommand = new RelayCommand(GoToNextPage);
         }
 
-        public async void GoToNextPage(object obj)
+        public async void GoToNextPage()
         {
             var viewModel = new ProductViewModel(_pageService, _locationService);
             await _pageService.GoNext(viewModel);
