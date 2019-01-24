@@ -1,10 +1,27 @@
 ﻿using System;
+using System.Threading.Tasks;
+using DeviceControlApp.ViewModel;
+
 namespace DeviceControlApp.NunitTests
 {
-    public class DummyPageService
+    public class DummyPageService:IPageService
     {
-        public DummyPageService()
+        private object _viewModel;
+
+        public Type GetViewModelPageType()
         {
+            return _viewModel.GetType();
         }
+
+        public async Task GoNext(Type viewModelType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task GoNext(object viewModel)
+        {
+            _viewModel = viewModel;
+        }
+
     }
 }

@@ -18,11 +18,6 @@ namespace DeviceControlApp.ViewModel
           
         }
 
-        public RelayCommand(Action<object>exeute):this(exeute,null)
-        {
-                
-        }
-
         public RelayCommand(Action execute):this((obj) => { execute.Invoke(); }, null)
         {
 
