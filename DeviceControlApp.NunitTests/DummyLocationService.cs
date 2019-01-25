@@ -1,14 +1,14 @@
-﻿using System.Threading;
+﻿using System;
 using System.Threading.Tasks;
 using DeviceControlApp.Services;
 
-namespace DeviceControlApp.UnitTests
+namespace DeviceControlApp.NunitTests
 {
-    internal class DummyLocationService:ILocationService
+    public class DummyLocationService:ILocationService
     {
         public async Task<MyPosition> GetLocation()
         {
-            return new MyPosition() 
+            return new MyPosition()
             {
                 Latitude = "1.0",
                 Longitude = "2.0"

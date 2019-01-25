@@ -1,19 +1,18 @@
-using System.Threading.Tasks;
-using DeviceControlApp.ViewModel;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using DeviceControlApp.ViewModel;
+using NUnit.Framework;
 using System;
-
-namespace DeviceControlApp.UnitTests
+namespace DeviceControlApp.NunitTests
 {
-    [TestClass]
+
     public class HomePageTests
     {
-        [TestMethod]
+
+        [Test]
         public void When_we_hit_next_then_we_go_to_location_page()
         {
             var dummyPageService = new DummyPageService();
             var locationdumyService = new DummyLocationService();
-            var homePageViewModel = new HomePageViewModel(dummyPageService,locationdumyService);
+            var homePageViewModel = new HomePageViewModel(dummyPageService, locationdumyService);
             var canGoNext = homePageViewModel.GoToNextCommand.CanExecute(null);
             homePageViewModel.GoToNextCommand.Execute(null);
 

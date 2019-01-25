@@ -2,16 +2,15 @@
 using System.Threading.Tasks;
 using DeviceControlApp.Services;
 using DeviceControlApp.ViewModel;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
+using NUnit.Framework;
 
-namespace DeviceControlApp.UnitTests
+namespace DeviceControlApp.NunitTests
 {
-    [TestClass]
     public class LocationPageTests
     {
-     
-        [TestMethod]
+
+        [Test]
         public void When_we_go_to_location_page_initally_coordinates_are_empty()
         {
             var dummyPageService = new DummyPageService();
@@ -25,7 +24,7 @@ namespace DeviceControlApp.UnitTests
             Assert.IsTrue(String.IsNullOrWhiteSpace(productPageViewModel.Longitude));
         }
 
-        [TestMethod]
+        [Test]
         public void When_we_hit_get_location_then_location_is_displayed()
         {
             var dummyPageService = new DummyPageService();
@@ -39,12 +38,12 @@ namespace DeviceControlApp.UnitTests
             Assert.AreEqual("2.0", productPageViewModel.Longitude);
         }
 
-        [TestMethod]
+        [Test]
         public void When_we_hit_get_location_then_location_is_displayed_using_nsubstitue()
         {
 
             var dummypageService = Substitute.For<IPageService>();
-           
+
             var dummyLocationService = Substitute.For<ILocationService>();
             var myPosition = new MyPosition();
             myPosition.Latitude = "1.0";
@@ -59,7 +58,7 @@ namespace DeviceControlApp.UnitTests
             Assert.AreEqual("2.0", productPageViewModel.Longitude);
         }
 
-        [TestMethod]
+        [Test]
         public void When_we_hit_clear_then_location_is_cleared()
         {
 
@@ -78,7 +77,7 @@ namespace DeviceControlApp.UnitTests
 
         }
 
-        [TestMethod]
+        [Test]
         public void When_we_hit_back_then_we_go_home_page()
         {
             var dummyPageService = new DummyPageService();
@@ -92,3 +91,4 @@ namespace DeviceControlApp.UnitTests
         }
     }
 }
+
