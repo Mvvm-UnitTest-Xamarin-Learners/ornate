@@ -3,8 +3,8 @@ using NUnit.Framework;
 using System;
 namespace DeviceControlApp.NunitTests
 {
-    [TestFixture()]
-    public class Test
+
+    public class HomePageTests
     {
 
         [Test]
