@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using DeviceControlApp.Core.Service;
 using DeviceControlApp.Core.ViewModel;
+using DeviceControlApp.View;
 using Xamarin.Forms;
 
-namespace DeviceControlApp.View
+namespace DeviceControlApp.ViewMap
 {
     public class PageService:IPageService
     {

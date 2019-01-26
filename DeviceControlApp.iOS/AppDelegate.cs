@@ -26,7 +26,7 @@ namespace DeviceControlApp.iOS
             Xamarin.Calabash.Start();
 #endif
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            LoadApplication(new App(5));
 
             return base.FinishedLaunching(app, options);
         }

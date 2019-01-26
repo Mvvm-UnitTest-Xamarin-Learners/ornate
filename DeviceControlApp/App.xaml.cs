@@ -2,6 +2,7 @@
 using DeviceControlApp.Core.ViewModel;
 using DeviceControlApp.ServiceImpln;
 using DeviceControlApp.View;
+using DeviceControlApp.ViewMap;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace DeviceControlApp
 {
     public partial class App : Application
     {
-        public App()
+        public App(int number)
         {
             InitializeComponent();
             var homePage = new HomePage();
