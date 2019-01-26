@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using DeviceControlApp.Core.Service;
 using DeviceControlApp.Services;
 using DeviceControlApp.View;
 using Plugin.Geolocator;
