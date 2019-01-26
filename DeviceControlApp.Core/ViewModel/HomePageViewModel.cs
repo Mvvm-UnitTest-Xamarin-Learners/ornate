@@ -1,23 +1,18 @@
-﻿using System;
-using System.Windows.Input;
-using DeviceControlApp.Core;
+﻿using System.Windows.Input;
 using DeviceControlApp.Core.Service;
-using DeviceControlApp.Services;
-using DeviceControlApp.View;
-using Xamarin.Forms;
 
-namespace DeviceControlApp.ViewModel
+namespace DeviceControlApp.Core.ViewModel
 {
     public class HomePageViewModel
     {
-      
+
         public ICommand GoToNextCommand { get; private set; }
 
         private IPageService _pageService;
 
         private ILocationService _locationService;
 
-        public HomePageViewModel(IPageService pageService,ILocationService locationService)
+        public HomePageViewModel(IPageService pageService, ILocationService locationService)
         {
             _pageService = pageService;
             _locationService = locationService;

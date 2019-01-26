@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using DeviceControlApp.Core.Service;
-using DeviceControlApp.ViewModel;
 
 namespace DeviceControlApp.NunitTests
 {
@@ -12,11 +11,6 @@ namespace DeviceControlApp.NunitTests
         public Type GetViewModelPageType()
         {
             return _viewModel.GetType();
-        }
-
-        public async Task GoNext(Type viewModelType)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task GoNext(object viewModel)

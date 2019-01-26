@@ -1,7 +1,7 @@
 ﻿using System;
+using DeviceControlApp.Core.ViewModel;
 using DeviceControlApp.Services;
 using DeviceControlApp.View;
-using DeviceControlApp.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

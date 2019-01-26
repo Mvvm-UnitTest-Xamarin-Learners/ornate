@@ -43,8 +43,14 @@
   <ItemGroup>
     <Compile Include="Service\ILocationService.cs" />
     <Compile Include="Service\IPageService.cs" />
-    <Compile Include="TestStatic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\HomePageViewModel.cs" />
+    <Compile Include="ViewModel\ProductViewModel.cs" />
+    <Compile Include="ViewModel\RelayCommand.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

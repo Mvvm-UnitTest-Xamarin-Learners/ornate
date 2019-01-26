@@ -1,6 +1,7 @@
-﻿using DeviceControlApp.ViewModel;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System;
+using DeviceControlApp.Core.ViewModel;
+
 namespace DeviceControlApp.NunitTests
 {
 

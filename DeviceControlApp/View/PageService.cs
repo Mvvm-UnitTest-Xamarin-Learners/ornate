@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DeviceControlApp.Core.Service;
-using DeviceControlApp.ViewModel;
+using DeviceControlApp.Core.ViewModel;
 using Xamarin.Forms;
 
 namespace DeviceControlApp.View

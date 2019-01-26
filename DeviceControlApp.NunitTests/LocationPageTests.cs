@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using DeviceControlApp.Core.Service;
+using DeviceControlApp.Core.ViewModel;
 using DeviceControlApp.Services;
-using DeviceControlApp.ViewModel;
 using NSubstitute;
 using NUnit.Framework;
 

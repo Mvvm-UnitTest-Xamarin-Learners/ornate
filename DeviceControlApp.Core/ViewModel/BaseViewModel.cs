@@ -1,10 +1,9 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace DeviceControlApp.ViewModel
+namespace DeviceControlApp.Core.ViewModel
 {
-    public class BaseViewModel:INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")

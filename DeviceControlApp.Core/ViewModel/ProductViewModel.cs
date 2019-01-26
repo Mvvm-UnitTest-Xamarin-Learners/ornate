@@ -1,19 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using DeviceControlApp.Core.Service;
-using DeviceControlApp.Services;
-using DeviceControlApp.View;
-using Plugin.Geolocator;
-using Plugin.Geolocator.Abstractions;
-using Xamarin.Forms;
 
-namespace DeviceControlApp.ViewModel
+namespace DeviceControlApp.Core.ViewModel
 {
-    public class ProductViewModel:BaseViewModel
+    public class ProductViewModel : BaseViewModel
     {
-       
-       
         public ICommand GoBackCommand { get; private set; }
         public ICommand DisplayLocationCommand { get; private set; }
         public ICommand ClearLocationCommand { get; private set; }
@@ -23,7 +14,6 @@ namespace DeviceControlApp.ViewModel
         private string _latitude;
         public string Latitude
         {
-
             get => _latitude;
             set
             {
@@ -55,13 +45,13 @@ namespace DeviceControlApp.ViewModel
             }
         }
 
-        public ProductViewModel(IPageService pageService,ILocationService locationService)
+        public ProductViewModel(IPageService pageService, ILocationService locationService)
         {
             _pageService = pageService;
             _locationService = locationService;
-             GoBackCommand = new RelayCommand(GoToHomePage);
-             ClearLocationCommand = new RelayCommand(ClearLocation);
-             DisplayLocationCommand = new RelayCommand(DisplayLocation);
+            GoBackCommand = new RelayCommand(GoToHomePage);
+            ClearLocationCommand = new RelayCommand(ClearLocation);
+            DisplayLocationCommand = new RelayCommand(DisplayLocation);
 
         }
 
@@ -78,17 +68,12 @@ namespace DeviceControlApp.ViewModel
             _pageService.GoNext(viewModel);
         }
 
-      
-
-        private async void DisplayLocation() 
+        private async void DisplayLocation()
         {
             var myLocation = await _locationService.GetLocation();
             Latitude = myLocation.Latitude;
             Longitude = myLocation.Longitude;
             Flag = true;
         }
-
-
-       
     }
 }

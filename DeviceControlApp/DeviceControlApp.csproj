@@ -15,15 +15,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\" />
-    <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Service\IPageService.cs" />
     <Compile Remove="Service\PageService.cs" />
     <Compile Remove="Service\NavigationService.cs" />
-    <Compile Remove="Model\DemoDate.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DeviceControlApp.Core\DeviceControlApp.Core.csproj" />
