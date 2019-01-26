@@ -54,10 +54,6 @@
       <Project>{a91b6bc7-8b9e-4b5c-aefb-2b72ef843a0a}</Project>
       <Name>DeviceControlApp.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DeviceControlApp\DeviceControlApp.csproj">
-      <Project>{F3B95DBC-280E-480C-8F52-1F570B8AB17E}</Project>
-      <Name>DeviceControlApp</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
