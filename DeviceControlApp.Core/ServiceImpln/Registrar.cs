@@ -14,7 +14,7 @@ namespace DeviceControlApp.Core.ServiceImpln
 
         public IRegistrar Register<T, IT>()
         {
-            _builder.RegisterType<T>().As<T>();
+            _builder.RegisterType<T>().As<IT>();
             return this;
         }
 
