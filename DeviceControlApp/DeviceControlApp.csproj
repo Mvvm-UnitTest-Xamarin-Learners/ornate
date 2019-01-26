@@ -25,4 +25,7 @@
     <Compile Remove="Service\NavigationService.cs" />
     <Compile Remove="Model\DemoDate.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DeviceControlApp.Core\DeviceControlApp.Core.csproj" />
+  </ItemGroup>
 </Project>
