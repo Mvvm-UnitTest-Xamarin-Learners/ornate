@@ -4,7 +4,7 @@ using DeviceControlApp.Core.Service;
 using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
 
-namespace DeviceControlApp.Services
+namespace DeviceControlApp.ServiceImpln
 {
     public class LocationService : ILocationService
     {
