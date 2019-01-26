@@ -1,4 +1,5 @@
 ﻿using System;
+using DeviceControlApp.Core.Service;
 using DeviceControlApp.Core.ViewModel;
 using DeviceControlApp.ServiceImpln;
 using DeviceControlApp.View;
@@ -11,7 +12,7 @@ namespace DeviceControlApp
 {
     public partial class App : Application
     {
-        public App(int number)
+        public App(IFactory factory)
         {
             InitializeComponent();
             var homePage = new HomePage();
