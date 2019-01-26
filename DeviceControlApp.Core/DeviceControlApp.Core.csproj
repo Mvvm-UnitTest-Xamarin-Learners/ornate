@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Service\ILocationService.cs" />
+    <Compile Include="Service\IPageService.cs" />
     <Compile Include="TestStatic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
