@@ -18,7 +18,7 @@ namespace DeviceControlApp.NunitTests
                 r.RegisterSingleton<IPageService>(dummyPageService);
                 r.RegisterSingleton<ILocationService>(locationdumyService);
             });
-
+            unitTestFactory.Initialize();
             var homePageViewModel = new HomePageViewModel(dummyPageService, unitTestFactory);
             var canGoNext = homePageViewModel.GoToNextCommand.CanExecute(null);
             homePageViewModel.GoToNextCommand.Execute(null);

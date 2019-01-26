@@ -13,16 +13,20 @@ namespace DeviceControlApp.Core.ServiceImpln
     {
         private IContainer _container;
 
+        private ContainerBuilder _builder;
         public Factory()
         {
-            ContainerBuilder builder = new ContainerBuilder();
-            RegisterAllTypesInAssembly(builder);
-            RegisterFactory(builder);
-            RegisterDependencies(new Registrar(builder));
-            _container = builder.Build();
+            _builder = new ContainerBuilder();
+            RegisterAllTypesInAssembly(_builder);
+            RegisterFactory(_builder);
         }
 
-        
+        public void Initialize()
+        {
+            RegisterDependencies(new Registrar(_builder));
+            _container = _builder.Build();
+        }
+
 
         private void RegisterFactory(ContainerBuilder builder)
         {
@@ -38,6 +42,8 @@ namespace DeviceControlApp.Core.ServiceImpln
             builder.RegisterAssemblyTypes(assembly).AsSelf();
         }
 
+
+        
 
         public T Get<T>()
         {
