@@ -16,7 +16,7 @@ namespace DeviceControlApp
         {
             InitializeComponent();
             var homePage = new HomePage();
-            homePage.BindingContext = new HomePageViewModel(new PageService(), new LocationService());
+            homePage.BindingContext = factory.Get<HomePageViewModel>();
             MainPage = new NavigationPage(homePage);
         }
 

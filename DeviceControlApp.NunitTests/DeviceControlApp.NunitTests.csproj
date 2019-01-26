@@ -51,6 +51,7 @@
     <Compile Include="DummyPageService.cs" />
     <Compile Include="DummyLocationService.cs" />
     <Compile Include="LocationPageTests.cs" />
+    <Compile Include="UnitTestFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DeviceControlApp.Core\DeviceControlApp.Core.csproj">

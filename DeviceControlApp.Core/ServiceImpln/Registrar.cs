@@ -12,9 +12,16 @@ namespace DeviceControlApp.Core.ServiceImpln
             _builder = builder;
         }
 
-        public void Register<T, IT>()
+        public IRegistrar Register<T, IT>()
         {
             _builder.RegisterType<T>().As<T>();
+            return this;
+        }
+
+        public IRegistrar RegisterSingleton<T>(T t) where T:class
+        {
+            _builder.RegisterInstance(t).As<T>();
+            return this;
         }
     }
 }

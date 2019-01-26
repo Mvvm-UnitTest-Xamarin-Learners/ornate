@@ -2,6 +2,7 @@
 {
     public interface IRegistrar
     {
-        void Register<T,IT>();
+        IRegistrar Register<T,IT>();
+        IRegistrar RegisterSingleton<T>(T t) where T : class;
     }
 }

@@ -4,6 +4,7 @@ using System.Text;
 using DeviceControlApp.Core.Service;
 using DeviceControlApp.Core.ServiceImpln;
 using DeviceControlApp.ServiceImpln;
+using DeviceControlApp.ViewMap;
 
 namespace DeviceControlApp
 {
@@ -18,6 +19,7 @@ namespace DeviceControlApp
         private void RegisterXamarinDependencies(IRegistrar registrar)
         {
             registrar.Register<LocationService, ILocationService>();
+            registrar.Register<PageService, IPageService>();
         }
 
         protected abstract void RegisterPlatformDependencies(IRegistrar registrar);

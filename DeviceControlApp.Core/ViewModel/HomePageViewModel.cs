@@ -9,20 +9,18 @@ namespace DeviceControlApp.Core.ViewModel
         public ICommand GoToNextCommand { get; private set; }
 
         private IPageService _pageService;
-
-        private ILocationService _locationService;
-
-        public HomePageViewModel(IPageService pageService, ILocationService locationService)
+        private readonly IFactory _factory;
+        
+        public HomePageViewModel(IPageService pageService, IFactory factory)
         {
             _pageService = pageService;
-            _locationService = locationService;
+            _factory = factory;
             GoToNextCommand = new RelayCommand(GoToNextPage);
         }
 
         public async void GoToNextPage()
         {
-            var viewModel = new ProductViewModel(_pageService, _locationService);
-            await _pageService.GoNext(viewModel);
+            await _pageService.GoNext(_factory.Get<ProductViewModel>());
         }
     }
 }

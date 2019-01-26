@@ -10,6 +10,7 @@ namespace DeviceControlApp.Core.ViewModel
         public ICommand ClearLocationCommand { get; private set; }
         public IPageService _pageService;
         public ILocationService _locationService;
+        private readonly IFactory _factory;
 
         private string _latitude;
         public string Latitude
@@ -45,10 +46,12 @@ namespace DeviceControlApp.Core.ViewModel
             }
         }
 
-        public ProductViewModel(IPageService pageService, ILocationService locationService)
+        public ProductViewModel(IPageService pageService, ILocationService locationService, IFactory factory)
         {
             _pageService = pageService;
             _locationService = locationService;
+            _factory = factory;
+
             GoBackCommand = new RelayCommand(GoToHomePage);
             ClearLocationCommand = new RelayCommand(ClearLocation);
             DisplayLocationCommand = new RelayCommand(DisplayLocation);
@@ -64,8 +67,7 @@ namespace DeviceControlApp.Core.ViewModel
 
         private void GoToHomePage()
         {
-            var viewModel = new HomePageViewModel(_pageService, _locationService);
-            _pageService.GoNext(viewModel);
+            _pageService.GoNext(_factory.Get<HomePageViewModel>());
         }
 
         private async void DisplayLocation()
