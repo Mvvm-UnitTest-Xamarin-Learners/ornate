@@ -21,9 +21,7 @@ namespace DeviceControlApp.Droid
             base.OnCreate(savedInstanceState);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            var factory = new AndroidFactory();
-            factory.Initialize();
-            LoadApplication(new App(factory));
+            LoadApplication(new App(new AndroidFactory()));
         }
     }
 }

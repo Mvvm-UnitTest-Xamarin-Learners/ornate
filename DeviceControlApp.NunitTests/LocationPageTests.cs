@@ -24,7 +24,6 @@ namespace DeviceControlApp.NunitTests
                 r.RegisterSingleton<IPageService>(dummyPageService);
                 r.RegisterSingleton<ILocationService>(dummyLocationService);
             });
-            unitTestFactory.Initialize();
             productPageViewModel = new ProductViewModel(dummyPageService, dummyLocationService, unitTestFactory);
         }
 

@@ -11,43 +11,64 @@ namespace DeviceControlApp.Core.ServiceImpln
 {
     public abstract class Factory : IFactory
     {
-        private IContainer _container;
-
-        private ContainerBuilder _builder;
-        public Factory()
+        private readonly ContainerLazyFactory _containerLazyFactory;
+        protected Factory()
         {
-            _builder = new ContainerBuilder();
-            RegisterAllTypesInAssembly(_builder);
-            RegisterFactory(_builder);
+            var builder = new ContainerBuilder();
+            RegisterAllTypesInAssembly(builder);
+            RegisterFactory(builder);
+            _containerLazyFactory = CreateContainerLazyFactory(builder);
         }
 
-        public void Initialize()
+        private ContainerLazyFactory CreateContainerLazyFactory(ContainerBuilder builder)
         {
-            RegisterDependencies(new Registrar(_builder));
-            _container = _builder.Build();
+            var c1 = new ContainerLazyFactory(() =>
+            {
+                var registrar = new Registrar(builder);
+                RegisterDependencies(registrar);
+                return builder;
+            });
+            return c1;
         }
 
+        public T Get<T>()
+        {
+            return _containerLazyFactory.GetContainer().Resolve<T>();
+        }
+
+        protected abstract void RegisterDependencies(IRegistrar registrar);
+        
 
         private void RegisterFactory(ContainerBuilder builder)
         {
             builder.RegisterInstance(this).As<IFactory>();
         }
-
-        protected abstract void RegisterDependencies(IRegistrar registrar);
-
-
+        
         private void RegisterAllTypesInAssembly(ContainerBuilder builder)
         {
             var assembly = Assembly.GetExecutingAssembly();
             builder.RegisterAssemblyTypes(assembly).AsSelf();
         }
 
-
-        
-
-        public T Get<T>()
+        private class ContainerLazyFactory
         {
-            return _container.Resolve<T>();
+            private readonly Func<ContainerBuilder> _containerBuilderFactory;
+            private IContainer _container;
+
+            public ContainerLazyFactory(Func<ContainerBuilder> containerBuilderFactory)
+            {
+                _containerBuilderFactory = containerBuilderFactory;
+            }
+
+            public IContainer GetContainer()
+            {
+                if (_container == null)
+                {
+                    var builder = _containerBuilderFactory.Invoke();
+                    _container = builder.Build();
+                }
+                return _container;
+            }
         }
     }
 }
