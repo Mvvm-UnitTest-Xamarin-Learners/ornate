@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using DeviceControlApp.ViewModel;
 using Plugin.Geolocator;
 using Xamarin.Forms;
 

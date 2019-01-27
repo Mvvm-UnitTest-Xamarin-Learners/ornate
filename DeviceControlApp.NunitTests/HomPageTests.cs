@@ -1,6 +1,7 @@
-﻿using DeviceControlApp.ViewModel;
+﻿using DeviceControlApp.Core.Service;
 using NUnit.Framework;
-using System;
+using DeviceControlApp.Core.ViewModel;
+
 namespace DeviceControlApp.NunitTests
 {
 
@@ -12,7 +13,13 @@ namespace DeviceControlApp.NunitTests
         {
             var dummyPageService = new DummyPageService();
             var locationdumyService = new DummyLocationService();
-            var homePageViewModel = new HomePageViewModel(dummyPageService, locationdumyService);
+            var unitTestFactory = new UnitTestFactory((r) =>
+            {
+                r.RegisterSingleton<IPageService>(dummyPageService);
+                r.RegisterSingleton<ILocationService>(locationdumyService);
+            });
+            unitTestFactory.Initialize();
+            var homePageViewModel = new HomePageViewModel(dummyPageService, unitTestFactory);
             var canGoNext = homePageViewModel.GoToNextCommand.CanExecute(null);
             homePageViewModel.GoToNextCommand.Execute(null);
 

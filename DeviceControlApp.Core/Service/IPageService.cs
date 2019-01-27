@@ -1,7 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace DeviceControlApp.ViewModel
+namespace DeviceControlApp.Core.Service
 {
     public interface IPageService
     {

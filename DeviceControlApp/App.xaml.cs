@@ -1,7 +1,9 @@
 ﻿using System;
-using DeviceControlApp.Services;
+using DeviceControlApp.Core.Service;
+using DeviceControlApp.Core.ViewModel;
+using DeviceControlApp.ServiceImpln;
 using DeviceControlApp.View;
-using DeviceControlApp.ViewModel;
+using DeviceControlApp.ViewMap;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,11 +12,11 @@ namespace DeviceControlApp
 {
     public partial class App : Application
     {
-        public App()
+        public App(IFactory factory)
         {
             InitializeComponent();
             var homePage = new HomePage();
-            homePage.BindingContext = new HomePageViewModel(new PageService(), new LocationService());
+            homePage.BindingContext = factory.Get<HomePageViewModel>();
             MainPage = new NavigationPage(homePage);
         }
 

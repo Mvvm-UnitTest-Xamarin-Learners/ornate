@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using DeviceControlApp.Services;
+using DeviceControlApp.Core.Service;
 
 namespace DeviceControlApp.NunitTests
 {

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using Plugin.Geolocator.Abstractions;
 
-namespace DeviceControlApp.Services
+namespace DeviceControlApp.Core.Service
 {
     public interface ILocationService
     {
@@ -11,7 +13,7 @@ namespace DeviceControlApp.Services
 
     public class MyPosition
     {
-        public string Latitude { get;set;}
+        public string Latitude { get; set; }
         public string Longitude { get; set; }
     }
 }

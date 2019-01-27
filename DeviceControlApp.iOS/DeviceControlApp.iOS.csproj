@@ -77,9 +77,12 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <RunWithWarnings>true</RunWithWarnings>
-    <MtouchUseLlvm></MtouchUseLlvm>
-    <IpaMetadata></IpaMetadata>
-    <MtouchHttpClientHandler></MtouchHttpClientHandler>
+    <MtouchUseLlvm>
+    </MtouchUseLlvm>
+    <IpaMetadata>
+    </IpaMetadata>
+    <MtouchHttpClientHandler>
+    </MtouchHttpClientHandler>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
     <DebugType>none</DebugType>
@@ -94,6 +97,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="IosFactory.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
@@ -159,6 +163,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\DeviceControlApp.Core\DeviceControlApp.Core.csproj">
+      <Project>{A91B6BC7-8B9E-4B5C-AEFB-2B72EF843A0A}</Project>
+      <Name>DeviceControlApp.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DeviceControlApp\DeviceControlApp.csproj">
       <Project>{F3B95DBC-280E-480C-8F52-1F570B8AB17E}</Project>
       <Name>DeviceControlApp</Name>
