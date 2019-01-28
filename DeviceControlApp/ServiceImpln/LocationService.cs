@@ -8,6 +8,11 @@ namespace DeviceControlApp.ServiceImpln
 {
     public class LocationService : ILocationService
     {
+        public bool CheckGpsEnabled()
+        {
+            return CrossGeolocator.Current.IsGeolocationEnabled;
+        }
+
         public async Task<MyPosition> GetLocation()
         {
             var locator = CrossGeolocator.Current;

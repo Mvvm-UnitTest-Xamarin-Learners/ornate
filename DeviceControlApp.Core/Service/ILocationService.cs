@@ -9,6 +9,7 @@ namespace DeviceControlApp.Core.Service
     public interface ILocationService
     {
         Task<MyPosition> GetLocation();
+        bool CheckGpsEnabled();
     }
 
     public class MyPosition
