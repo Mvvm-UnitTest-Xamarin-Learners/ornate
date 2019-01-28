@@ -11,7 +11,7 @@ namespace DeviceControlApp.NunitTests
         [Test]
         public void When_we_hit_next_then_we_go_to_location_page()
         {
-            var dummyPageService = new DummyPageService();
+            var dummyPageService = new FakePageService();
             var locationdumyService = new DummyLocationService();
             var unitTestFactory = new UnitTestFactory((r) =>
             {

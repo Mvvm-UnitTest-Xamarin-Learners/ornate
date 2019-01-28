@@ -17,8 +17,8 @@ namespace DeviceControlApp.NunitTests
         [SetUp]
         public void Setup()
         {
-            dummyPageService = new DummyPageService();
-            dummyLocationService = new DummyLocationService();
+            dummyPageService = new FakePageService();
+            dummyLocationService = Substitute.For<ILocationService>(); 
             unitTestFactory = new UnitTestFactory(r =>
             {
                 r.RegisterSingleton<IPageService>(dummyPageService);
@@ -47,26 +47,6 @@ namespace DeviceControlApp.NunitTests
             Assert.AreEqual("2.0", productPageViewModel.Longitude);
         }
 
-        //[Test]
-        //public void When_we_hit_get_location_then_location_is_displayed_using_nsubstitue()
-        //{
-
-        //    var dummypageService = Substitute.For<IPageService>();
-
-        //    var dummyLocationService = Substitute.For<ILocationService>();
-        //    var myPosition = new MyPosition();
-        //    myPosition.Latitude = "1.0";
-        //    myPosition.Longitude = "2.0";
-        //    dummyLocationService.GetLocation().Returns(Task.FromResult(myPosition));
-        //    var productPageViewModel = new ProductViewModel(dummypageService, dummyLocationService);
-        //    var canGetLocation = productPageViewModel.DisplayLocationCommand.CanExecute(null);
-        //    Assert.AreEqual(true, canGetLocation);
-        //    productPageViewModel.DisplayLocationCommand.Execute(null);
-
-        //    Assert.AreEqual("1.0", productPageViewModel.Latitude);
-        //    Assert.AreEqual("2.0", productPageViewModel.Longitude);
-        //}
-
         [Test]
         public void When_we_hit_clear_then_location_is_cleared()
         {
@@ -91,7 +71,7 @@ namespace DeviceControlApp.NunitTests
             productPageViewModel.GoBackCommand.Execute(null);
 
             Assert.AreEqual(true, canGoBack);
-            Assert.AreEqual(typeof(HomePageViewModel), ((DummyPageService)dummyPageService).GetViewModelPageType());
+            Assert.AreEqual(typeof(HomePageViewModel), ((FakePageService)dummyPageService).GetViewModelPageType());
         }
     }
 }
