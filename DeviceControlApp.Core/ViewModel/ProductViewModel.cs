@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Input;
 using DeviceControlApp.Core.Service;
 
@@ -81,6 +82,7 @@ namespace DeviceControlApp.Core.ViewModel
         private async void DisplayLocation()
         {
             var myLocation = await _locationService.GetLocation();
+            Debug.Write(myLocation.Latitude);
             Latitude = myLocation.Latitude;
             Longitude = myLocation.Longitude;
             Flag = true;

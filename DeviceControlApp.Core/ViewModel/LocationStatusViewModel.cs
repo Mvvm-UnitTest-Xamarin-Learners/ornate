@@ -11,6 +11,7 @@ namespace DeviceControlApp.Core.ViewModel
         private readonly IFactory _factory;
         public IPageService _pageService;
         public ILocationService _locationService;
+        public IGpsSensor _gpsSensor;
 
         private string _message;
         public string Message
@@ -23,12 +24,12 @@ namespace DeviceControlApp.Core.ViewModel
             }
 
         }
-        public LocationStatusViewModel(IPageService pageService,ILocationService locationService,IFactory factory)
+        public LocationStatusViewModel(IPageService pageService,IGpsSensor gpsSensorService,IFactory factory)
         {
              
             _factory = factory;
             _pageService = pageService;
-            _locationService = locationService;
+            _gpsSensor = gpsSensorService;
              CheckLocationServiceisEnabled();
             BackCommand = new RelayCommand(GoToProductPage);
             RefreshCommand = new RelayCommand(CheckLocationServiceisEnabled);
@@ -40,7 +41,7 @@ namespace DeviceControlApp.Core.ViewModel
         }
         private void CheckLocationServiceisEnabled()
         {
-            if(_locationService.CheckGpsEnabled())
+            if(_gpsSensor.CheckGpsEnabled())
             {
                 Message = "Gps Location is Avilable";
             }

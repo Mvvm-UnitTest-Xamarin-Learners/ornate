@@ -1,4 +1,5 @@
 ﻿using DeviceControlApp.Core.Service;
+using DeviceControlApp.iOS.ServiceImpln;
 
 namespace DeviceControlApp.iOS
 {
@@ -6,7 +7,7 @@ namespace DeviceControlApp.iOS
     {
         protected override void RegisterPlatformDependencies(IRegistrar registrar)
         {
-
+            registrar.Register<GpsService, IGpsSensor>();
         }
     }
 }

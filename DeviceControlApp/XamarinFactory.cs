@@ -20,6 +20,7 @@ namespace DeviceControlApp
         {
             registrar.Register<LocationService, ILocationService>();
             registrar.Register<PageService, IPageService>();
+          // registrar.Register<GpsService, IGpsSensor>();
         }
 
         protected abstract void RegisterPlatformDependencies(IRegistrar registrar);
