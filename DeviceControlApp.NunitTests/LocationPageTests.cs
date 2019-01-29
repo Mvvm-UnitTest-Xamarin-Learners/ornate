@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using DeviceControlApp.Core.Service;
 using DeviceControlApp.Core.ViewModel;
@@ -24,7 +25,7 @@ namespace DeviceControlApp.NunitTests
                 r.RegisterSingleton<IPageService>(fakePageService);
                 r.RegisterSingleton<ILocationService>(dummyLocationService);
             });
-            productPageViewModel = new ProductViewModel(fakePageService, dummyLocationService, unitTestFactory);
+             productPageViewModel = new ProductViewModel(fakePageService, dummyLocationService, unitTestFactory);
         }
 
 
@@ -39,10 +40,11 @@ namespace DeviceControlApp.NunitTests
         [Test]
         public void When_we_hit_get_location_then_location_is_displayed()
         {
+            dummyLocationService.GetLocation().Returns(Task.FromResult(new MyPosition { Latitude = "1.0", Longitude = "2.0" }));
             var canGetLocation = productPageViewModel.DisplayLocationCommand.CanExecute(null);
             Assert.AreEqual(true, canGetLocation);
             productPageViewModel.DisplayLocationCommand.Execute(null);
-
+           
             Assert.AreEqual("1.0", productPageViewModel.Latitude);
             Assert.AreEqual("2.0", productPageViewModel.Longitude);
         }
@@ -58,7 +60,7 @@ namespace DeviceControlApp.NunitTests
             var canClearLocation = productPageViewModel.ClearLocationCommand.CanExecute(null);
             Assert.AreEqual(true, canClearLocation);
             productPageViewModel.ClearLocationCommand.Execute(null);
-
+          
             Assert.IsTrue(String.IsNullOrWhiteSpace(productPageViewModel.Latitude));
             Assert.IsTrue(String.IsNullOrWhiteSpace(productPageViewModel.Longitude));
 
