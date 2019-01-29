@@ -9,7 +9,7 @@ namespace DeviceControlApp.NunitTests
 {
     public class LocationPageTests
     {
-        private IPageService dummyPageService;
+        private IPageService fakePageService;
         private ILocationService dummyLocationService;
         private UnitTestFactory unitTestFactory;
         private ProductViewModel productPageViewModel;
@@ -17,14 +17,14 @@ namespace DeviceControlApp.NunitTests
         [SetUp]
         public void Setup()
         {
-            dummyPageService = new FakePageService();
+            fakePageService= new FakePageService();
             dummyLocationService = Substitute.For<ILocationService>(); 
             unitTestFactory = new UnitTestFactory(r =>
             {
-                r.RegisterSingleton<IPageService>(dummyPageService);
+                r.RegisterSingleton<IPageService>(fakePageService);
                 r.RegisterSingleton<ILocationService>(dummyLocationService);
             });
-            productPageViewModel = new ProductViewModel(dummyPageService, dummyLocationService, unitTestFactory);
+            productPageViewModel = new ProductViewModel(fakePageService, dummyLocationService, unitTestFactory);
         }
 
 
@@ -71,7 +71,7 @@ namespace DeviceControlApp.NunitTests
             productPageViewModel.GoBackCommand.Execute(null);
 
             Assert.AreEqual(true, canGoBack);
-            Assert.AreEqual(typeof(HomePageViewModel), ((FakePageService)dummyPageService).GetViewModelPageType());
+            Assert.AreEqual(typeof(HomePageViewModel), ((FakePageService)fakePageService).GetViewModelPageType());
         }
     }
 }
