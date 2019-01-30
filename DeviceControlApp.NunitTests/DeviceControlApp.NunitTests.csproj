@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="HomPageTests.cs" />
     <Compile Include="FakePageService.cs" />
-    <Compile Include="DummyLocationService.cs" />
     <Compile Include="LocationPageTests.cs" />
     <Compile Include="UnitTestFactory.cs" />
   </ItemGroup>
