@@ -76,7 +76,7 @@ namespace DeviceControlApp.Core.ViewModel
 
         private void GoToLocationStatusPage()
         {
-            _pageService.GoNext(_factory.Get<LocationStatusViewModel>());
+            _pageService.GoNext(_factory.Get<GpsStatusViewModel>());
         }
 
         private async void DisplayLocation()

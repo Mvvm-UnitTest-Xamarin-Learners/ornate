@@ -4,7 +4,7 @@ using DeviceControlApp.Core.Service;
 
 namespace DeviceControlApp.Core.ViewModel
 {
-    public class LocationStatusViewModel:BaseViewModel
+    public class GpsStatusViewModel:BaseViewModel
     {
         public ICommand BackCommand { get; private set; }
         public ICommand RefreshCommand{ get; private set; }
@@ -24,7 +24,7 @@ namespace DeviceControlApp.Core.ViewModel
             }
 
         }
-        public LocationStatusViewModel(IPageService pageService,IGpsSensorService gpsSensorService,IFactory factory)
+        public GpsStatusViewModel(IPageService pageService,IGpsSensorService gpsSensorService,IFactory factory)
         {
              
             _factory = factory;

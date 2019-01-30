@@ -21,7 +21,7 @@ namespace DeviceControlApp.ViewMap
         {
             _map.Add(typeof(HomePageViewModel), typeof(HomePage));
             _map.Add(typeof(LocationViewModel), typeof(ProductPage));
-            _map.Add(typeof(LocationStatusViewModel), typeof(LocationStatusPage));
+            _map.Add(typeof(GpsStatusViewModel), typeof(LocationStatusPage));
 
         }
 

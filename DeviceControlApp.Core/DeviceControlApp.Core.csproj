@@ -55,7 +55,7 @@
     <Compile Include="ViewModel\HomePageViewModel.cs" />
     <Compile Include="ViewModel\LocationViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
-    <Compile Include="ViewModel\LocationStatusViewModel.cs" />
+    <Compile Include="ViewModel\GpsStatusViewModel.cs" />
     <Compile Include="Service\IGpsSensorService.cs" />
   </ItemGroup>
   <ItemGroup>
