@@ -54,15 +54,19 @@ namespace DeviceControlApp.NunitTests
         [Test]
         public void When_we_hit_clear_then_location_is_cleared()
         {
-            
+            var latitude = "1.0";
+            var longitude = "2.0";
+            _mockLocationService.GetLocation().Returns(Task.FromResult(new MyPosition { Latitude = latitude, Longitude = longitude }));
+
             var canGetLocation = productPageViewModel.DisplayLocationCommand.CanExecute(null);
             Assert.AreEqual(true, canGetLocation);
+
             productPageViewModel.DisplayLocationCommand.Execute(null);
 
             var canClearLocation = productPageViewModel.ClearLocationCommand.CanExecute(null);
             Assert.AreEqual(true, canClearLocation);
             productPageViewModel.ClearLocationCommand.Execute(null);
-          
+
             Assert.IsTrue(String.IsNullOrWhiteSpace(productPageViewModel.Latitude));
             Assert.IsTrue(String.IsNullOrWhiteSpace(productPageViewModel.Longitude));
 
