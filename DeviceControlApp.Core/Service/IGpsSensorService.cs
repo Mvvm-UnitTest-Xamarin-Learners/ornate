@@ -1,8 +1,8 @@
 ﻿using System;
 namespace DeviceControlApp.Core.Service
 {
-    public interface IGpsSensor
+    public interface IGpsSensorService
     {
-        bool CheckGpsEnabled();
+        bool IsGpsEnabled();
     }
 }

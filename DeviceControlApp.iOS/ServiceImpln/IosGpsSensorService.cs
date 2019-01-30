@@ -2,11 +2,11 @@
 using DeviceControlApp.Core.Service;
 using Plugin.Geolocator;
 
-namespace DeviceControlApp.Droid.ServiceImpln
+namespace DeviceControlApp.iOS.ServiceImpln
 {
-    public class GpsService : IGpsSensor
+    public class IosGpsSensorService : IGpsSensorService
     {
-        public bool CheckGpsEnabled()
+        public bool IsGpsEnabled()
         {
             return CrossGeolocator.Current.IsGeolocationEnabled;
         }

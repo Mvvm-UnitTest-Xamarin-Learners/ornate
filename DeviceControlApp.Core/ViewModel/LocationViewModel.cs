@@ -5,7 +5,7 @@ using DeviceControlApp.Core.Service;
 
 namespace DeviceControlApp.Core.ViewModel
 {
-    public class ProductViewModel : BaseViewModel
+    public class LocationViewModel : BaseViewModel
     {
         public ICommand GoBackCommand { get; private set; }
         public ICommand DisplayLocationCommand { get; private set; }
@@ -49,7 +49,7 @@ namespace DeviceControlApp.Core.ViewModel
             }
         }
 
-        public ProductViewModel(IPageService pageService, ILocationService locationService, IFactory factory)
+        public LocationViewModel(IPageService pageService, ILocationService locationService, IFactory factory)
         {
             _pageService = pageService;
             _locationService = locationService;

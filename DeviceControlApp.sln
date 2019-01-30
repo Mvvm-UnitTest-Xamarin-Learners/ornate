@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceControlApp.Android", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceControlApp.iOS", "DeviceControlApp.iOS\DeviceControlApp.iOS.csproj", "{DD847360-3E28-4657-B782-C22F58AF19F1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeviceControlApp", "DeviceControlApp\DeviceControlApp.csproj", "{F3B95DBC-280E-480C-8F52-1F570B8AB17E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceControlApp", "DeviceControlApp\DeviceControlApp.csproj", "{F3B95DBC-280E-480C-8F52-1F570B8AB17E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceControlApp.NunitTests", "DeviceControlApp.NunitTests\DeviceControlApp.NunitTests.csproj", "{9FBCA21A-94E5-474A-B7A8-18938EF600C2}"
 EndProject

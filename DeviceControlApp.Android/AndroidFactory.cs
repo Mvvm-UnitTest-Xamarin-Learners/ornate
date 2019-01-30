@@ -7,7 +7,7 @@ namespace DeviceControlApp.Droid
     {
         protected override void RegisterPlatformDependencies(IRegistrar registrar)
         {
-            registrar.Register<GpsService, IGpsSensor>();
+            registrar.Register<AndroidGpsSensorService, IGpsSensorService>();
         }
     }
 }

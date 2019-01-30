@@ -20,7 +20,7 @@ namespace DeviceControlApp.Core.ViewModel
 
         public async void GoToNextPage()
         {
-            await _pageService.GoNext(_factory.Get<ProductViewModel>());
+            await _pageService.GoNext(_factory.Get<LocationViewModel>());
         }
     }
 }

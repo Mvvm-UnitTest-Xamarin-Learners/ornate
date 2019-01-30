@@ -7,7 +7,7 @@ namespace DeviceControlApp.iOS
     {
         protected override void RegisterPlatformDependencies(IRegistrar registrar)
         {
-            registrar.Register<GpsService, IGpsSensor>();
+            registrar.Register<IosGpsSensorService, IGpsSensorService>();
         }
     }
 }
