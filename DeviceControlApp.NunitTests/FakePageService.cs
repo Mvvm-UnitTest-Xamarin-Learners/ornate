@@ -4,7 +4,7 @@ using DeviceControlApp.Core.Service;
 
 namespace DeviceControlApp.NunitTests
 {
-    public class DummyPageService:IPageService
+    public class FakePageService:IPageService
     {
         private object _viewModel;
 

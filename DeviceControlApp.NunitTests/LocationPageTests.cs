@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using DeviceControlApp.Core.Service;
 using DeviceControlApp.Core.ViewModel;
@@ -9,29 +10,29 @@ namespace DeviceControlApp.NunitTests
 {
     public class LocationPageTests
     {
-        private IPageService dummyPageService;
-        private ILocationService dummyLocationService;
+        private IPageService fakePageService;
+        private ILocationService _mockLocationService;
         private UnitTestFactory unitTestFactory;
         private ProductViewModel productPageViewModel;
 
         [SetUp]
         public void Setup()
         {
-            dummyPageService = new DummyPageService();
-            dummyLocationService = new DummyLocationService();
+            fakePageService= new FakePageService();
+            _mockLocationService = Substitute.For<ILocationService>(); 
             unitTestFactory = new UnitTestFactory(r =>
             {
-                r.RegisterSingleton<IPageService>(dummyPageService);
-                r.RegisterSingleton<ILocationService>(dummyLocationService);
+                r.RegisterSingleton<IPageService>(fakePageService);
+                r.RegisterSingleton<ILocationService>(_mockLocationService);
             });
-            productPageViewModel = new ProductViewModel(dummyPageService, dummyLocationService, unitTestFactory);
+            productPageViewModel = new ProductViewModel(fakePageService, _mockLocationService, unitTestFactory);
         }
 
 
         [Test]
         public void When_we_go_to_location_page_initially_coordinates_are_empty()
         {
-            
+            _mockLocationService.GetLocation().Returns(Task.FromResult(new MyPosition { Latitude = String.Empty, Longitude = string.Empty }));
             Assert.IsTrue(String.IsNullOrWhiteSpace(productPageViewModel.Latitude));
             Assert.IsTrue(String.IsNullOrWhiteSpace(productPageViewModel.Longitude));
         }
@@ -39,40 +40,27 @@ namespace DeviceControlApp.NunitTests
         [Test]
         public void When_we_hit_get_location_then_location_is_displayed()
         {
+            var latitude = "1.0";
+            var longitude = "2.0";
+            _mockLocationService.GetLocation().Returns(Task.FromResult(new MyPosition { Latitude=latitude, Longitude = longitude }));
             var canGetLocation = productPageViewModel.DisplayLocationCommand.CanExecute(null);
             Assert.AreEqual(true, canGetLocation);
             productPageViewModel.DisplayLocationCommand.Execute(null);
-
-            Assert.AreEqual("1.0", productPageViewModel.Latitude);
-            Assert.AreEqual("2.0", productPageViewModel.Longitude);
+           
+            Assert.AreEqual(latitude, productPageViewModel.Latitude);
+            Assert.AreEqual(longitude, productPageViewModel.Longitude);
         }
-
-        //[Test]
-        //public void When_we_hit_get_location_then_location_is_displayed_using_nsubstitue()
-        //{
-
-        //    var dummypageService = Substitute.For<IPageService>();
-
-        //    var dummyLocationService = Substitute.For<ILocationService>();
-        //    var myPosition = new MyPosition();
-        //    myPosition.Latitude = "1.0";
-        //    myPosition.Longitude = "2.0";
-        //    dummyLocationService.GetLocation().Returns(Task.FromResult(myPosition));
-        //    var productPageViewModel = new ProductViewModel(dummypageService, dummyLocationService);
-        //    var canGetLocation = productPageViewModel.DisplayLocationCommand.CanExecute(null);
-        //    Assert.AreEqual(true, canGetLocation);
-        //    productPageViewModel.DisplayLocationCommand.Execute(null);
-
-        //    Assert.AreEqual("1.0", productPageViewModel.Latitude);
-        //    Assert.AreEqual("2.0", productPageViewModel.Longitude);
-        //}
 
         [Test]
         public void When_we_hit_clear_then_location_is_cleared()
         {
-            
+            var latitude = "1.0";
+            var longitude = "2.0";
+            _mockLocationService.GetLocation().Returns(Task.FromResult(new MyPosition { Latitude = latitude, Longitude = longitude }));
+
             var canGetLocation = productPageViewModel.DisplayLocationCommand.CanExecute(null);
             Assert.AreEqual(true, canGetLocation);
+
             productPageViewModel.DisplayLocationCommand.Execute(null);
 
             var canClearLocation = productPageViewModel.ClearLocationCommand.CanExecute(null);
@@ -91,7 +79,7 @@ namespace DeviceControlApp.NunitTests
             productPageViewModel.GoBackCommand.Execute(null);
 
             Assert.AreEqual(true, canGoBack);
-            Assert.AreEqual(typeof(HomePageViewModel), ((DummyPageService)dummyPageService).GetViewModelPageType());
+            Assert.AreEqual(typeof(HomePageViewModel), ((FakePageService)fakePageService).GetViewModelPageType());
         }
     }
 }
