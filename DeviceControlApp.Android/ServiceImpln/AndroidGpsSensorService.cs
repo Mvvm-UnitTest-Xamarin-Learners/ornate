@@ -1,6 +1,7 @@
 ﻿using System;
 using DeviceControlApp.Core.Service;
-using Plugin.Geolocator;
+using DeviceControlApp.ServiceImpln;
+
 
 namespace DeviceControlApp.Droid.ServiceImpln
 {
@@ -8,7 +9,7 @@ namespace DeviceControlApp.Droid.ServiceImpln
     {
         public bool IsGpsEnabled()
         {
-            return CrossGeolocator.Current.IsGeolocationEnabled;
+            return GpsSensorService.IsGpsEnabled();
         }
     }
 }
