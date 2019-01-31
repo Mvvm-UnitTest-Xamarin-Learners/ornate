@@ -21,6 +21,7 @@
     <Compile Remove="Service\IPageService.cs" />
     <Compile Remove="Service\PageService.cs" />
     <Compile Remove="Service\NavigationService.cs" />
+    <Compile Remove="ServiceImpln\Bootstrap.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DeviceControlApp.Core\DeviceControlApp.Core.csproj" />

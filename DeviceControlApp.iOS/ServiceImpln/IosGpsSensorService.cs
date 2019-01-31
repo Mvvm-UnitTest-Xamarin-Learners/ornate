@@ -1,15 +1,14 @@
 ﻿using System;
-using DeviceControlApp.Core.Service;
-using DeviceControlApp.ServiceImpln;
-
+using Plugin.Geolocator;
 
 namespace DeviceControlApp.iOS.ServiceImpln
 {
-    public class IosGpsSensorService : IGpsSensorService
+    public class IosGpsSensorService
     {
-        public bool IsGpsEnabled()
+        public static bool IsGpsEnabled()
         {
-            return GpsSensorService.IsGpsEnabled();
+            return CrossGeolocator.Current.IsGeolocationEnabled;
         }
+
     }
 }

@@ -7,9 +7,11 @@ namespace DeviceControlApp.Droid.ServiceImpln
 {
     public class AndroidGpsSensorService : IGpsSensorService
     {
+        MyAppLocationService appLocationService;
         public bool IsGpsEnabled()
         {
-            return GpsSensorService.IsGpsEnabled();
+            appLocationService = new MyAppLocationService();
+            return appLocationService.IsLocationTurnedOn();
         }
     }
 }
