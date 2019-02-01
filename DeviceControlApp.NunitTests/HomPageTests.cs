@@ -24,7 +24,7 @@ namespace DeviceControlApp.NunitTests
             homePageViewModel.GoToNextCommand.Execute(null);
 
             Assert.AreEqual(true, canGoNext);
-            Assert.AreEqual(typeof(ProductViewModel), fakePageService.GetViewModelPageType());
+            Assert.AreEqual(typeof(LocationViewModel), fakePageService.GetViewModelPageType());
         }
     }
 }

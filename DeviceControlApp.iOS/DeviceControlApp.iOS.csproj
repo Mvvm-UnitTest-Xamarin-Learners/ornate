@@ -103,6 +103,7 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceImpln\IosGpsSensorService.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -171,5 +172,8 @@
       <Project>{F3B95DBC-280E-480C-8F52-1F570B8AB17E}</Project>
       <Name>DeviceControlApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ServiceImpln\" />
   </ItemGroup>
 </Project>

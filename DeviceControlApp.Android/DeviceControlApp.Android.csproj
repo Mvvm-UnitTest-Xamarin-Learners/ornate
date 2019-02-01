@@ -64,6 +64,9 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceImpln\AndroidGpsSensorService.cs" />
+    <Compile Include="ServiceImpln\MyAppLocationService.cs" />
+    <Compile Include="Service\IMyAppLocationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -94,6 +97,8 @@
     <Folder Include="Resources\drawable-xxhdpi\" />
     <Folder Include="Resources\drawable-xxxhdpi\" />
     <Folder Include="Resources\drawable\" />
+    <Folder Include="ServiceImpln\" />
+    <Folder Include="Service\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DeviceControlApp.Core\DeviceControlApp.Core.csproj">

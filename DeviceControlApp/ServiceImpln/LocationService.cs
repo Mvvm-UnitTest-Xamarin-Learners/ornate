@@ -10,14 +10,16 @@ namespace DeviceControlApp.ServiceImpln
     {
         public async Task<MyPosition> GetLocation()
         {
-            var locator = CrossGeolocator.Current;
-            locator.DesiredAccuracy = 50;
-            var position = await locator.GetPositionAsync();
-            return new MyPosition()
-            {
-                Latitude = position.Latitude.ToString(),
-                Longitude = position.Longitude.ToString(),
-            };
+
+                var locator = CrossGeolocator.Current;
+                locator.DesiredAccuracy = 50;
+                var position = await locator.GetPositionAsync();
+                return new MyPosition()
+                {
+                    Latitude = position.Latitude.ToString(),
+                    Longitude = position.Longitude.ToString(),
+                };
+
         }
     }
 }

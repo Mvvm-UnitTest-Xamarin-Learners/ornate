@@ -1,4 +1,5 @@
 ﻿using DeviceControlApp.Core.Service;
+using DeviceControlApp.Droid.ServiceImpln;
 
 namespace DeviceControlApp.Droid
 {
@@ -6,7 +7,7 @@ namespace DeviceControlApp.Droid
     {
         protected override void RegisterPlatformDependencies(IRegistrar registrar)
         {
-            
+            registrar.Register<AndroidGpsSensorService, IGpsSensorService>();
         }
     }
 }

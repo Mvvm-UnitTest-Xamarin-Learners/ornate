@@ -21,8 +21,17 @@
     <Compile Remove="Service\IPageService.cs" />
     <Compile Remove="Service\PageService.cs" />
     <Compile Remove="Service\NavigationService.cs" />
+    <Compile Remove="ServiceImpln\Bootstrap.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DeviceControlApp.Core\DeviceControlApp.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="View\ProductPage.xaml.cs">
+      <DependentUpon>LocationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="View\LocationPage.xaml.cs">
+      <DependentUpon>LocationPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>
