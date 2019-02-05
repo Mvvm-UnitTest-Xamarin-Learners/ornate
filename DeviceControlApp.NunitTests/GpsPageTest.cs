@@ -33,8 +33,8 @@ namespace DeviceControlApp.NunitTests
         [Test]
         public void when_we_go_gpsStatusPage_status_intial_message_is_shown()
         {
-
-             Assert.AreEqual("Gps Location is Disabled", gpsStatusViewModel.Message);
+            gpsStatusViewModel.Message = "Gps Location is available";
+            Assert.AreEqual("Gps Location is available", gpsStatusViewModel.Message);
         }
 
         [Test]
