@@ -1,15 +1,17 @@
 ﻿using System;
+using CoreLocation;
 using DeviceControlApp.Core.Service;
-using Plugin.Geolocator;
+
 
 namespace DeviceControlApp.iOS.ServiceImpln
 {
     public class IosGpsSensorService: IGpsSensorService
     {
-       
+         CLLocationManager locMgr;
         public bool IsGpsEnabled()
         {
-            return CrossGeolocator.Current.IsGeolocationEnabled;
+            return CLLocationManager.LocationServicesEnabled;
+           // return CrossGeolocator.Current.IsGeolocationEnabled;
         }
 
     }
