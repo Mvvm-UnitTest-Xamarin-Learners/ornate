@@ -19,7 +19,7 @@ namespace DeviceControlApp.NunitTests
         [SetUp]
         public void Setup()
         {
-             fakePageService = new FakePageService();
+            fakePageService = new FakePageService();
             locationService = Substitute.For<ILocationService>();
             gpsSensorService = Substitute.For<IGpsSensorService>();
             gpsSensorService.IsGpsEnabled().Returns(false);
