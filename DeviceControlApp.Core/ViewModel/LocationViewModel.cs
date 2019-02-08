@@ -80,11 +80,17 @@ namespace DeviceControlApp.Core.ViewModel
 
         private async void DisplayLocation()
         {
-            var myLocation = await _locationService.GetLocation();
-            myLocation.ToString();
-            Latitude = myLocation.Latitude;
-            Longitude = myLocation.Longitude;
-            Flag = true;
+            try
+            {
+                var myLocation = await _locationService.GetLocation();
+                Latitude = myLocation.Latitude;
+                Longitude = myLocation.Longitude;
+                Flag = true;
+            }
+            catch(Exception e)
+            {
+
+            }
         }
     }
 }
