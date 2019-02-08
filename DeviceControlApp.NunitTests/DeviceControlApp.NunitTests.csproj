@@ -51,7 +51,7 @@
     <Compile Include="FakePageService.cs" />
     <Compile Include="LocationPageTests.cs" />
     <Compile Include="UnitTestFactory.cs" />
-    <Compile Include="GpsPageTest.cs" />
+    <Compile Include="GivenGpsIsDisabledGpsPageTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DeviceControlApp.Core\DeviceControlApp.Core.csproj">

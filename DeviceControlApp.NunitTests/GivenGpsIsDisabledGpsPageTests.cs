@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DeviceControlApp.NunitTests
 {
-    public class GpsPageTest
+    public class GivenGpsIsDisabledGpsPageTests
     {
         private IPageService fakePageService;
         private IGpsSensorService gpsSensorService;
@@ -19,9 +19,10 @@ namespace DeviceControlApp.NunitTests
         [SetUp]
         public void Setup()
         {
-             fakePageService = new FakePageService();
+            fakePageService = new FakePageService();
             locationService = Substitute.For<ILocationService>();
             gpsSensorService = Substitute.For<IGpsSensorService>();
+            gpsSensorService.IsGpsEnabled().Returns(false);
             unitTestFactory = new UnitTestFactory(r =>
             {
                 r.RegisterSingleton<IPageService>(fakePageService);
@@ -31,14 +32,14 @@ namespace DeviceControlApp.NunitTests
             gpsStatusViewModel = new GpsStatusViewModel(fakePageService, gpsSensorService, unitTestFactory);
         }
         [Test]
-        public void when_we_go_gpsStatusPage_status_intial_message_is_shown()
+        public void when_we_go_gps_statusPage_status_intial_message_is_shown()
         {
-
-             Assert.AreEqual("Gps Location is Disabled", gpsStatusViewModel.Message);
+           
+            Assert.AreEqual("Gps Location is Disabled", gpsStatusViewModel.Message);
         }
 
         [Test]
-        public void When_we_hit_back_then_we_go_home_page()
+        public void When_we_hit_back_then_we_go_location_page()
         {
             var canGoBack = gpsStatusViewModel.BackCommand.CanExecute(null);
             gpsStatusViewModel.BackCommand.Execute(null);
@@ -55,6 +56,15 @@ namespace DeviceControlApp.NunitTests
 
             Assert.AreEqual("Gps Location is Disabled", gpsStatusViewModel.Message);
         }
-        
+
+        [Test]
+        public void When_gps_is_enabled_and_page_is_refreshed_then_enable_message_is_shown()
+        {
+            gpsSensorService.IsGpsEnabled().Returns(true);
+            var refreshPage = gpsStatusViewModel.RefreshCommand.CanExecute(null);
+            gpsStatusViewModel.RefreshCommand.Execute(null);
+
+            Assert.AreEqual("Gps Location is Avilable", gpsStatusViewModel.Message);
+        }
     }
 }
