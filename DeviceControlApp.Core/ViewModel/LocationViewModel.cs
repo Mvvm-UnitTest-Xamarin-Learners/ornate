@@ -37,6 +37,8 @@ namespace DeviceControlApp.Core.ViewModel
                 NotifyPropertyChanged();
             }
         }
+
+        //This flag is an unnecessary variable. Has to be removed
         private bool _flag;
         public bool Flag
         {
