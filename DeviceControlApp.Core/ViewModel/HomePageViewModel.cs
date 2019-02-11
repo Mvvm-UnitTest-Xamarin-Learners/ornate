@@ -5,7 +5,6 @@ namespace DeviceControlApp.Core.ViewModel
 {
     public class HomePageViewModel
     {
-
         public ICommand GoToNextCommand { get; private set; }
 
         private IPageService _pageService;
