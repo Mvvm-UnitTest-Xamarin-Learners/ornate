@@ -57,6 +57,8 @@
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\GpsStatusViewModel.cs" />
     <Compile Include="Service\IGpsSensorService.cs" />
+    <Compile Include="Service\IDataStore.cs" />
+    <Compile Include="ServiceImpln\DataStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
