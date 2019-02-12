@@ -19,6 +19,7 @@ namespace DeviceControlApp.Core.ViewModel
             set{
                 _name = value;
                 NotifyPropertyChanged();
+                EnableButton(_name);
             }
         }
         private bool _flag;
@@ -31,12 +32,22 @@ namespace DeviceControlApp.Core.ViewModel
                 NotifyPropertyChanged();
             }
         }
+        private void EnableButton(string name)
+        {
+            if (name.Length >= 3)
+                Flag = true;
+            else
+                Flag = false;
 
+        }
         public HomePageViewModel(IPageService pageService, IFactory factory,IDataStore dataStore)
         {
+             Flag = false;
             _pageService = pageService;
             _factory = factory;
             _datastore = dataStore;
+            if(!_datastore.IsEmpty())
+             Name = _datastore.Get<string>("Name");
             GoToNextCommand = new RelayCommand(GoToNextPage);
         }
 

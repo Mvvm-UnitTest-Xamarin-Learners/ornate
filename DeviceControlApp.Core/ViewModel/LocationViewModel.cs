@@ -33,8 +33,6 @@ namespace DeviceControlApp.Core.ViewModel
            
         }
 
-
-
         private string _longitude;
         public string Longitude
         {
@@ -65,7 +63,7 @@ namespace DeviceControlApp.Core.ViewModel
         {
             Latitude = "";
             Longitude = "";
-            Flag = false;
+
         }
 
         private void GoToHomePage()
@@ -85,7 +83,7 @@ namespace DeviceControlApp.Core.ViewModel
                 var myLocation = await _locationService.GetLocation();
                 Latitude = myLocation.Latitude;
                 Longitude = myLocation.Longitude;
-                Flag = true;
+                //Flag = true;
             }
             catch(Exception e)
             {

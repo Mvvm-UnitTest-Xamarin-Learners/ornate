@@ -5,5 +5,6 @@ namespace DeviceControlApp.Core.Service
     {
         void Put<T>(string key, T t);
         T Get<T>(string key);
+        bool IsEmpty();
     }
 }

@@ -11,18 +11,32 @@ namespace DeviceControlApp.Core.ServiceImpln
 
         public T Get<T>(string key)
         {
+
             if (_map.ContainsKey(key))
             {
                 return (T)_map[key];
             }
             else
             {
+               
                 throw new Exception("obj not found");
             }
         }
 
+        public bool IsEmpty()
+        {
+            if (_map.Count == 0)
+                return true;
+            return false;
+        }
+
         public void Put<T>(string key, T t)
         {
+            if (_map.ContainsKey(key))
+            {
+                _map[key] = t;
+                return;
+            }
             _map.Add(key, t);
         }
 

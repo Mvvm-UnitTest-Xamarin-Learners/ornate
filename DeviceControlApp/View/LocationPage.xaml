@@ -6,13 +6,12 @@
     Title="Product Page"
     x:Name="product">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+        <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="5">
             <Label Text="{Binding Name,StringFormat='Hello There General &quot;{0}&quot;'}"/>
             <Button Text="Back"  Command="{Binding GoBackCommand}"/>
             <Button Text="GetLocation" Command="{Binding DisplayLocationCommand}"/>
-            
-            <Label x:Name="Latitude" Text="{Binding Latitude}" IsVisible="{Binding flag}" />
-            <Label x:Name="Longitude" Text="{Binding Longitude}" IsVisible="{Binding flag}"/>
+            <Label x:Name="Latitude" Text="{Binding Latitude}" IsVisible="{Binding flag}" XAlign="Center" YAlign="Center"/>
+            <Label x:Name="Longitude" Text="{Binding Longitude}" IsVisible="{Binding flag}" XAlign="Center" YAlign="Center"/>
             <Button Text="Clear" Command="{Binding ClearLocationCommand}"/>
             <StackLayout Padding="0,20,0,0">
             <Button Text="Next" Command="{Binding NextPageCommand}"/>
