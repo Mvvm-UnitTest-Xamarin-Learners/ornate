@@ -47,18 +47,6 @@ namespace DeviceControlApp.Core.ViewModel
             }
         }
 
-        //This flag is an unnecessary variable. Has to be removed
-        private bool _flag;
-        public bool Flag
-        {
-            get => _flag;
-            set
-            {
-                _flag = value;
-                NotifyPropertyChanged();
-            }
-        }
-
         public LocationViewModel(IPageService pageService, ILocationService locationService, IFactory factory,IDataStore dataStore)
         {
             _pageService = pageService;

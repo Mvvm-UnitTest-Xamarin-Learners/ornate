@@ -7,7 +7,7 @@
     x:Name="product">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-            <Label Text="{Binding Name}"/>
+            <Label Text="{Binding Name,StringFormat='Hello There General &quot;{0}&quot;'}"/>
             <Button Text="Back"  Command="{Binding GoBackCommand}"/>
             <Button Text="GetLocation" Command="{Binding DisplayLocationCommand}"/>
             

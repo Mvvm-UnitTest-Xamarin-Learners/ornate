@@ -21,6 +21,17 @@ namespace DeviceControlApp.Core.ViewModel
                 NotifyPropertyChanged();
             }
         }
+        private bool _flag;
+        public bool Flag
+        {
+            get => _flag;
+            set
+            {
+                _flag = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public HomePageViewModel(IPageService pageService, IFactory factory,IDataStore dataStore)
         {
             _pageService = pageService;
