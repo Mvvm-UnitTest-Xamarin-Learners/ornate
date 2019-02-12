@@ -27,11 +27,7 @@ namespace DeviceControlApp.Core.ViewModel
 
         }
        
-        public string Name {
-            get;
-            set;
-           
-        }
+        public string Name { get; set; }
 
         private string _longitude;
         public string Longitude
@@ -56,14 +52,12 @@ namespace DeviceControlApp.Core.ViewModel
             ClearLocationCommand = new RelayCommand(ClearLocation);
             DisplayLocationCommand = new RelayCommand(DisplayLocation);
             NextPageCommand = new RelayCommand(GoToLocationStatusPage);
-
         }
        
         private void ClearLocation()
         {
             Latitude = "";
             Longitude = "";
-
         }
 
         private void GoToHomePage()

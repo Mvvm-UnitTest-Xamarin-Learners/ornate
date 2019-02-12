@@ -18,12 +18,11 @@ namespace DeviceControlApp.Core.ServiceImpln
             }
             else
             {
-               
                 throw new Exception("obj not found");
             }
         }
 
-        public bool IsEmpty()
+        public bool IsContainsKey()
         {
             if (_map.Count == 0)
                 return true;

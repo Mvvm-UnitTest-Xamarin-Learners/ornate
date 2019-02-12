@@ -22,40 +22,40 @@ namespace DeviceControlApp.Core.ViewModel
                 EnableButton(_name);
             }
         }
-        private bool _flag;
-        public bool Flag
+
+        private bool _isButtonenabled;
+        public bool IsButtonEnabled
         {
-            get => _flag;
+            get => _isButtonenabled;
             set
             {
-                _flag = value;
+                _isButtonenabled = value;
                 NotifyPropertyChanged();
             }
         }
         private void EnableButton(string name)
         {
             if (name.Length >= 3)
-                Flag = true;
+                IsButtonEnabled = true;
             else
-                Flag = false;
+                IsButtonEnabled = false;
 
         }
+
         public HomePageViewModel(IPageService pageService, IFactory factory,IDataStore dataStore)
         {
-             Flag = false;
+            IsButtonEnabled = false;
             _pageService = pageService;
             _factory = factory;
             _datastore = dataStore;
-            if(!_datastore.IsEmpty())
+            if(!_datastore.IsContainsKey())
              Name = _datastore.Get<string>("Name");
             GoToNextCommand = new RelayCommand(GoToNextPage);
         }
 
         public async void GoToNextPage()
         {
-
             _datastore.Put("Name", Name);
-            
             await _pageService.GoNext(_factory.Get<LocationViewModel>());
         }
     }
