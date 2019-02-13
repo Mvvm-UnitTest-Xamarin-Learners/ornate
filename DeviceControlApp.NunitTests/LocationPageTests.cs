@@ -12,20 +12,23 @@ namespace DeviceControlApp.NunitTests
     {
         private IPageService fakePageService;
         private ILocationService _mockLocationService;
+        private IDataStore _datastore;
         private UnitTestFactory unitTestFactory;
         private LocationViewModel productPageViewModel;
 
         [SetUp]
         public void Setup()
         {
-            fakePageService= new FakePageService();
+             fakePageService= new FakePageService();
+            _datastore = Substitute.For<IDataStore>();
             _mockLocationService = Substitute.For<ILocationService>(); 
             unitTestFactory = new UnitTestFactory(r =>
             {
                 r.RegisterSingleton<IPageService>(fakePageService);
                 r.RegisterSingleton<ILocationService>(_mockLocationService);
+                r.RegisterSingleton<IDataStore>(_datastore);
             });
-            productPageViewModel = new LocationViewModel(fakePageService, _mockLocationService, unitTestFactory);
+            productPageViewModel = new LocationViewModel(fakePageService, _mockLocationService, unitTestFactory,_datastore);
         }
 
 

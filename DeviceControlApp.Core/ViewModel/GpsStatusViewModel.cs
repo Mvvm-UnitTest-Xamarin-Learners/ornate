@@ -14,12 +14,8 @@ namespace DeviceControlApp.Core.ViewModel
         public IGpsSensorService _gpsSensorService;
         public IDataStore _dataStore;
 
-        public string Name
-        {
-            get;
-            set;
-
-        }
+        public string Name { get; set; }
+      
         private string _message;
         public string Message
         {

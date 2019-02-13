@@ -15,11 +15,13 @@ namespace DeviceControlApp.NunitTests
         private UnitTestFactory unitTestFactory;
         private GpsStatusViewModel gpsStatusViewModel;
         private ILocationService locationService;
-       
+        private IDataStore _datastore;
+
         [SetUp]
         public void Setup()
         {
             fakePageService = new FakePageService();
+            _datastore = Substitute.For<IDataStore>();
             locationService = Substitute.For<ILocationService>();
             gpsSensorService = Substitute.For<IGpsSensorService>();
             gpsSensorService.IsGpsEnabled().Returns(false);
@@ -28,8 +30,9 @@ namespace DeviceControlApp.NunitTests
                 r.RegisterSingleton<IPageService>(fakePageService);
                 r.RegisterSingleton<ILocationService>(locationService);
                 r.RegisterSingleton<IGpsSensorService>(gpsSensorService);
+                r.RegisterSingleton<IDataStore>(_datastore);
             });
-            gpsStatusViewModel = new GpsStatusViewModel(fakePageService, gpsSensorService, unitTestFactory);
+            gpsStatusViewModel = new GpsStatusViewModel(fakePageService, gpsSensorService, unitTestFactory, _datastore);
         }
         [Test]
         public void when_we_go_gps_statusPage_status_intial_message_is_shown()

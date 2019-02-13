@@ -51,6 +51,7 @@ namespace DeviceControlApp.Core.ViewModel
             if(!_datastore.IsContainsKey())
              Name = _datastore.Get<string>("Name");
             GoToNextCommand = new RelayCommand(GoToNextPage);
+            GoToNextCommand.CanExecute(false);
         }
 
         public async void GoToNextPage()
