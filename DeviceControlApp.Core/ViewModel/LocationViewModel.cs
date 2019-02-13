@@ -47,7 +47,7 @@ namespace DeviceControlApp.Core.ViewModel
             _locationService = locationService;
             _factory = factory;
             _dataStore = dataStore;
-            Name = _dataStore.Get<string>("Name");
+            Name = _dataStore.Get<string>("HomePageWelcomeName");
             GoBackCommand = new RelayCommand(GoToHomePage);
             ClearLocationCommand = new RelayCommand(ClearLocation);
             DisplayLocationCommand = new RelayCommand(DisplayLocation);
@@ -77,7 +77,6 @@ namespace DeviceControlApp.Core.ViewModel
                 var myLocation = await _locationService.GetLocation();
                 Latitude = myLocation.Latitude;
                 Longitude = myLocation.Longitude;
-                //Flag = true;
             }
             catch(Exception e)
             {

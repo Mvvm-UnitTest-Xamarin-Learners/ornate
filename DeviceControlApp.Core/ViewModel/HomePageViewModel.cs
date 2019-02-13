@@ -42,21 +42,22 @@ namespace DeviceControlApp.Core.ViewModel
 
         }
 
-        public HomePageViewModel(IPageService pageService, IFactory factory,IDataStore dataStore)
+        public HomePageViewModel(IPageService pageService, IFactory factory, IDataStore dataStore)
         {
             IsButtonEnabled = false;
             _pageService = pageService;
             _factory = factory;
             _datastore = dataStore;
-            if(!_datastore.IsContainsKey())
-             Name = _datastore.Get<string>("Name");
+            if (_datastore.IsDataAvailable("HomePageWelcomeName"))
+                Name = _datastore.Get<string>("HomePageWelcomeName");
             GoToNextCommand = new RelayCommand(GoToNextPage);
-            GoToNextCommand.CanExecute(false);
         }
+
+            
 
         public async void GoToNextPage()
         {
-            _datastore.Put("Name", Name);
+            _datastore.Put("HomePageWelcomeName", Name);
             await _pageService.GoNext(_factory.Get<LocationViewModel>());
         }
     }

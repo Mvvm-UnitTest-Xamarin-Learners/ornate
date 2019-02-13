@@ -22,9 +22,9 @@ namespace DeviceControlApp.Core.ServiceImpln
             }
         }
 
-        public bool IsContainsKey()
+        public bool IsDataAvailable(string key)
         {
-            if (_map.Count == 0)
+            if (_map.ContainsKey(key))
                 return true;
             return false;
         }
