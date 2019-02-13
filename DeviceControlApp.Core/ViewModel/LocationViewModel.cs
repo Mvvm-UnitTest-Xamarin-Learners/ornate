@@ -47,7 +47,7 @@ namespace DeviceControlApp.Core.ViewModel
             _locationService = locationService;
             _factory = factory;
             _dataStore = dataStore;
-            Name = _dataStore.Get<string>("HomePageWelcomeName");
+            Name = _dataStore.Get<string>("LoggedInUserName");
             GoBackCommand = new RelayCommand(GoToHomePage);
             ClearLocationCommand = new RelayCommand(ClearLocation);
             DisplayLocationCommand = new RelayCommand(DisplayLocation);
