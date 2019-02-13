@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 using DeviceControlApp.Core.Service;
+using DeviceControlApp.Core.ServiceImpln;
 
 namespace DeviceControlApp.Core.ViewModel
 {
@@ -13,7 +14,7 @@ namespace DeviceControlApp.Core.ViewModel
         public IPageService _pageService;
         public ILocationService _locationService;
         private readonly IFactory _factory;
-
+        public IDataStore _dataStore;
         private string _latitude;
         public string Latitude
         {
@@ -25,6 +26,8 @@ namespace DeviceControlApp.Core.ViewModel
             }
 
         }
+       
+        public string Name { get; set; }
 
         private string _longitude;
         public string Longitude
@@ -38,36 +41,23 @@ namespace DeviceControlApp.Core.ViewModel
             }
         }
 
-        //This flag is an unnecessary variable. Has to be removed
-        private bool _flag;
-        public bool Flag
-        {
-            get => _flag;
-            set
-            {
-                _flag = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        public LocationViewModel(IPageService pageService, ILocationService locationService, IFactory factory)
+        public LocationViewModel(IPageService pageService, ILocationService locationService, IFactory factory,IDataStore dataStore)
         {
             _pageService = pageService;
             _locationService = locationService;
             _factory = factory;
-
+            _dataStore = dataStore;
+            Name = _dataStore.Get<string>("HomePageWelcomeName");
             GoBackCommand = new RelayCommand(GoToHomePage);
             ClearLocationCommand = new RelayCommand(ClearLocation);
             DisplayLocationCommand = new RelayCommand(DisplayLocation);
             NextPageCommand = new RelayCommand(GoToLocationStatusPage);
-
         }
-
+       
         private void ClearLocation()
         {
             Latitude = "";
             Longitude = "";
-            Flag = false;
         }
 
         private void GoToHomePage()
@@ -87,7 +77,6 @@ namespace DeviceControlApp.Core.ViewModel
                 var myLocation = await _locationService.GetLocation();
                 Latitude = myLocation.Latitude;
                 Longitude = myLocation.Longitude;
-                Flag = true;
             }
             catch(Exception e)
             {

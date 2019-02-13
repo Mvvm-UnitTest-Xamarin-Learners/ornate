@@ -42,6 +42,7 @@ namespace DeviceControlApp.Core.ServiceImpln
         private void RegisterFactory(ContainerBuilder builder)
         {
             builder.RegisterInstance(this).As<IFactory>();
+            builder.RegisterInstance(new DataStore()).As<IDataStore>();
         }
         
         private void RegisterAllTypesInAssembly(ContainerBuilder builder)

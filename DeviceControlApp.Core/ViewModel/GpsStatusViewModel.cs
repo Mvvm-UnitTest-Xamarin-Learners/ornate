@@ -12,7 +12,10 @@ namespace DeviceControlApp.Core.ViewModel
         public IPageService _pageService;
         public ILocationService _locationService;
         public IGpsSensorService _gpsSensorService;
+        public IDataStore _dataStore;
 
+        public string Name { get; set; }
+      
         private string _message;
         public string Message
         {
@@ -24,13 +27,15 @@ namespace DeviceControlApp.Core.ViewModel
             }
 
         }
-        public GpsStatusViewModel(IPageService pageService,IGpsSensorService gpsSensorService,IFactory factory)
+        public GpsStatusViewModel(IPageService pageService,IGpsSensorService gpsSensorService,IFactory factory,IDataStore dataStore)
         {
              
             _factory = factory;
             _pageService = pageService;
             _gpsSensorService = gpsSensorService;
              CheckLocationServiceisEnabled();
+            _dataStore = dataStore;
+            Name = _dataStore.Get<string>("HomePageWelcomeName");
             BackCommand = new RelayCommand(GoToProductPage);
             RefreshCommand = new RelayCommand(CheckLocationServiceisEnabled);
         }
