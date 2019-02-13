@@ -48,8 +48,8 @@ namespace DeviceControlApp.Core.ViewModel
             _pageService = pageService;
             _factory = factory;
             _datastore = dataStore;
-            if (_datastore.IsDataAvailable("HomePageWelcomeName"))
-                Name = _datastore.Get<string>("HomePageWelcomeName");
+            if (_datastore.IsDataAvailable("LoggedInUserName"))
+                Name = _datastore.Get<string>("LoggedInUserName");
             GoToNextCommand = new RelayCommand(GoToNextPage);
         }
 
@@ -57,7 +57,7 @@ namespace DeviceControlApp.Core.ViewModel
 
         public async void GoToNextPage()
         {
-            _datastore.Put("HomePageWelcomeName", Name);
+            _datastore.Put("LoggedInUserName", Name);
             await _pageService.GoNext(_factory.Get<LocationViewModel>());
         }
     }

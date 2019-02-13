@@ -35,7 +35,7 @@ namespace DeviceControlApp.Core.ViewModel
             _gpsSensorService = gpsSensorService;
              CheckLocationServiceisEnabled();
             _dataStore = dataStore;
-            Name = _dataStore.Get<string>("HomePageWelcomeName");
+            Name = _dataStore.Get<string>("LoggedInUserName");
             BackCommand = new RelayCommand(GoToProductPage);
             RefreshCommand = new RelayCommand(CheckLocationServiceisEnabled);
         }
