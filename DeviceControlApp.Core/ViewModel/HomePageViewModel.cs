@@ -1,12 +1,16 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Diagnostics;
+using System.Windows.Input;
 using DeviceControlApp.Core.Service;
 using DeviceControlApp.Core.ServiceImpln;
+
 
 namespace DeviceControlApp.Core.ViewModel
 {
     public class HomePageViewModel:BaseViewModel
     {
-        public ICommand GoToNextCommand { get; private set; }
+      
+        public RelayCommand GoToNextCommand { get; private set; }
 
         private IPageService _pageService;
         public IDataStore _datastore;
@@ -18,42 +22,37 @@ namespace DeviceControlApp.Core.ViewModel
             get => _name;
             set{
                 _name = value;
+               
                 NotifyPropertyChanged();
-                EnableButton(_name);
-            }
-        }
 
-        private bool _isButtonenabled;
-        public bool IsButtonEnabled
-        {
-            get => _isButtonenabled;
-            set
-            {
-                _isButtonenabled = value;
-                NotifyPropertyChanged();
-            }
-        }
-        private void EnableButton(string name)
-        {
-            if (name.Length >= 3)
-                IsButtonEnabled = true;
-            else
-                IsButtonEnabled = false;
+                GoToNextCommand.RaiseCanExecuteChanged();
 
+            }
         }
 
         public HomePageViewModel(IPageService pageService, IFactory factory, IDataStore dataStore)
         {
-            IsButtonEnabled = false;
+          
             _pageService = pageService;
             _factory = factory;
             _datastore = dataStore;
+
+            GoToNextCommand = new RelayCommand(GoToNextPage, CanExecuteGoToNextCommand);
             if (_datastore.IsDataAvailable("LoggedInUserName"))
                 Name = _datastore.Get<string>("LoggedInUserName");
-            GoToNextCommand = new RelayCommand(GoToNextPage);
         }
 
-            
+        public bool CanExecuteGoToNextCommand()
+        {
+            if (string.IsNullOrEmpty(Name))
+            {
+
+                return false;
+            }
+            if (Name.Length >= 3)
+                return true;
+            return false;
+        }
 
         public async void GoToNextPage()
         {
