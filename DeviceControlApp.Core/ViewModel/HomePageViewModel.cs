@@ -11,7 +11,6 @@ namespace DeviceControlApp.Core.ViewModel
     {
       
         public RelayCommand GoToNextCommand { get; private set; }
-
         private IPageService _pageService;
         public IDataStore _datastore;
         private readonly IFactory _factory;
