@@ -7,7 +7,7 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
             <Entry Placeholder="Enter Name" Text="{Binding Name}" x:Name="Entry"/>
-            <Button Text="Next Page" Command="{Binding GoToNextCommand}" IsEnabled="{Binding IsButtonEnabled}"/>
+            <Button Text="Next Page" Command="{Binding GoToNextCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
